@@ -35,6 +35,7 @@ async def check_availability():
                                     await asyncio.sleep(1)
                 else:
                     await channel.send("Search failed")
+                    print("Search failed")
         await asyncio.sleep(30)
 
 client.loop.create_task(check_availability())
