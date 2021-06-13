@@ -1,11 +1,13 @@
 import json
+import discord as discord
 from discord import Embed
 from discord.ext import commands
 import asyncio
 import aiohttp
-client = commands.Bot(command_prefix='!')
+import os
+client = commands.Bot(command_prefix='!',allowed_mentions = discord.AllowedMentions(everyone = True))
 client.remove_command('help')
-TOKEN = "ODUzMzIwNTQ0ODIwMjY0OTcw.YMTqrw.eUHk9Li-fHMNPp0_VGPOWNhKIIY"
+TOKEN = os.environ.get('TOKEN')
 
 async def check_availability():
     await client.wait_until_ready()
@@ -29,6 +31,7 @@ async def check_availability():
                                     embed.add_field(name='Item',value=x['handle'])
                                     embed.add_field(name='updated at', value=x['updated_at'])
                                     await channel.send(embed=embed)
+                                    await channel.send('@everyone')
                                     await asyncio.sleep(1)
         await asyncio.sleep(30)
 
