@@ -33,6 +33,8 @@ async def check_availability():
                                     await channel.send(embed=embed)
                                     await channel.send('@everyone')
                                     await asyncio.sleep(1)
+                else:
+                    await channel.send("Search failed")
         await asyncio.sleep(30)
 
 client.loop.create_task(check_availability())
