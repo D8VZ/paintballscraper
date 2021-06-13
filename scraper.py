@@ -9,11 +9,11 @@ TOKEN = "ODUzMzIwNTQ0ODIwMjY0OTcw.YMTqrw.eUHk9Li-fHMNPp0_VGPOWNhKIIY"
 
 async def check_availability():
     await client.wait_until_ready()
-    print("checking")
     channel = client.get_channel(853326235563589694)
     products_json_url = "https://hormesispaintball.com/products.json?limit=10000"
 
     while not client.is_closed():
+        print("checking")
         async with aiohttp.ClientSession() as session:
             async with session.get(products_json_url) as search:
                 if search.status == 200:
